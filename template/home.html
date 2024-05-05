@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My JOBS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+      #banner {
+        height: 360px;
+        width: 100%;
+        object-fit:cover;
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    <img class="img-fluid" id="banner" src="/static/ian-schneider-TamMbr4okv4-unsplash.jpg">
+    <div class="container">
+      <h1 class="text-center mt-2 mb-4">
+        My JOBS
+      </h1>
+      <div class="row" style="margin-bottom:32px">
+        <div class="col-md-6">
+      <p class="lead">
+Welcome to MY JOBS, your ultimate destination for finding the perfect job match! Whether you're a seasoned professional looking for your next career move or a fresh graduate eager to kickstart your journey, MY JOBS offers a comprehensive platform to explore a wide range of job opportunities across industries and regions. With our user-friendly interface and advanced search filters, finding your dream job has never been easier. Our mission is to connect talented individuals with top employers, facilitating seamless recruitment processes and fostering meaningful career connections. Join MY JOBS today and take the first step towards achieving your professional aspirations.
+
+      </p>
+        </div>
+        <div class="d-none d-md-block col-md-6">
+        <img src="/static/working.jpg" style="height:320px;border-radius:4px;">
+        </div>
+      </div>
+      <h2 class="text-center mt-2 mb-4">Open Positions</h2>
+      <div>
+        {% for job in jobs %}
+          {% include 'jobitem.html' %}
+        {% endfor %}
+      </div>
+      <div class="text-center">
+      <a class="btn btn-primary btn-lg"
+         href="mailto:hello@jovian.ai?subject=Question%20about%20Job%20Opernings&body=My%20name%3A%20%3Cyour%20name%20here%3E%0D%0A%0D%0AMy%20questions%3A%20%3Center%20question%20here%3E%0D%0A">Contact Us</a>
+      </div>
+        <p class="text-center text-muted">&copy; 2024 My Career, Inc</p>
+    </div>
+  </body>
+</html>
