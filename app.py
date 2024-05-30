@@ -1,5 +1,5 @@
 from flask import Flask, render_template,jsonify
-from Employee_database import get_job,delete_job,update_location,update_salary,add_job,initialize_db,get_all_jobs
+from database import get_job,delete_job,update_location,update_salary,add_job,initialize_db,get_all_jobs
 
 
 connection,cursor=initialize_db()

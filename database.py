@@ -36,7 +36,7 @@ def update_salary(id, new_salary):
 
 
 def get_job(id):
-    return f'''SELECT * FROM jobs
+    return f'''SELECT title,location,salary,currency,responsibilities,requirements FROM jobs
                WHERE id={id};'''
 def get_all_jobs():
-    return f'''SELECT * FROM jobs;'''
+    return f'''SELECT title,location,salary,currency,responsibilities,requirements FROM jobs;'''
