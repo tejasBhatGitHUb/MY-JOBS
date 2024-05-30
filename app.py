@@ -1,45 +1,32 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template,jsonify
+from Employee_database import get_job,delete_job,update_location,update_salary,add_job,initialize_db,get_all_jobs
 
+
+connection,cursor=initialize_db()
 app = Flask(__name__, template_folder="template")
 
-JOBS = [
-    {
-        'id': 1,
-        'title': 'Data Analyst',
-        'location': 'Bengaluru, India',
-        'salary': 'Rs. 10,00,000'
-    },
-    {
-        'id': 2,
-        'title': 'Data Scientist',
-        'location': 'Delhi, India',
-        'salary': 'Rs. 15,00,000'
-    },
-    {
-        'id': 3,
-        'title': 'Frontend Engineer',
-        'location': 'Remote'
-    },
-    {
-        'id': 4,
-        'title': 'Backend Engineer',
-        'location': 'San Francisco, USA',
-        'salary': '$150,000'
-    }
-]
-
-
+def load_jobs():
+    cursor.execute(get_all_jobs())
+    temp=cursor.fetchall()
+    connection.commit()
+    return temp
 @app.route("/")
-def hello_jovian():
+def start():
+    JOBS=load_jobs()
+    print(JOBS)
     return render_template('home.html',
                            jobs=JOBS
                            )
-
-
-# @app.route("/api/jobs")
-# def list_jobs():
-#     return jsonify(JOBS)
-
-
+@app.route("/add")
+def create():
+    cursor.execute(add_job(title="Backend Developer" , location="Bengaluru",responsibilities="Manage and build REST API",requirements="Flask,PostgreSQL,Python",salary=1000000,currency="Rs")
+)
+    connection.commit()
+    return "CREATED!!!!"
+@app.route('/delete')
+def delete():
+    cursor.execute(delete_job(id=1))
+    connection.commit()
+    return "DELETED"
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True,port=5000)
