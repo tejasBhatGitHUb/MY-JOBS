@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 
-from database import get_job, get_all_jobs,add_application_to_db,add_job
+from database import get_job, get_all_jobs,add_application_to_db,add_job,is_present
 
 app = Flask(__name__, template_folder="template")
 
@@ -33,12 +33,14 @@ def apply_for_job(id):
 
 @app.route('/jobs/<id>/apply/submission',methods=['POST','GET'])
 def form_submission(id):
-    # try:
-    application=request.form
-    # add_application_to_db(application,id)
-    return render_template('application_submitted.html', application=application)
-    # except:
-    #     return render_template('ERROR_page.html')
+    try:
+        application=request.form
+        if is_present(application['id']):
+            return render_template('ERROR_page.html',message1="Job Posting Status",message2="You have already posted this job.")
+        add_application_to_db(application,id)
+        return render_template('application_submitted.html', application=application)
+    except:
+        return render_template('ERROR_page.html',message1="Something Went Wrong!",message2="We're sorry, but something went wrong while processing your request. Please try again later.")
 
 @app.route("/job-posting/submission",methods=["POST","GET"])
 def job_opening_submission():

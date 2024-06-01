@@ -62,3 +62,9 @@ def add_application_to_db(application,id):
         return True
     except :
         return False
+def is_present(id):
+    cursor.execute(f'''SELECT id FROM jobs
+                       WHERE id='{id}';''')
+    x=cursor.fetchall()
+    connection.commit()
+    return True if x else False
