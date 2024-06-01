@@ -1,9 +1,13 @@
 <div class="border-bottom row" style="margin-bottom:16px;padding-bottom:8px;">
   <div class="col-10">
     <h4
-      style="color:rgb(120,120,120); margin-bottom:4px;">
-      {{job['title']}}
+      style="color:rgb(70,70,70); margin-bottom:4px;">
+      <b>{{job['role']}}</b>
     </h4>
+    <h5
+      style="color:rgb(90,90,90); margin-bottom:4px;">
+      <a href="{{job['website']}}" target="_blank">{{job['company']}}</a>
+    </h5>
     <div>
       <b>Location:</b> {{job['location']}}
     </div>
@@ -15,7 +19,7 @@
     {% endif %}
   </div>
   <div class="col-2 padding-right:15px">
-    <a href="mailto:tejasbhat2001@gmail.com?subject=Application%20for%20{{job['title']}}&body=My%20name%3A%20%3Cyour%20name%20here%3E%0D%0A%0D%0AMy%20Resume%20link%3A%20%3Cresume%20link%3E%0D%0A%0D%0AMy%20LinkedIn%20link%3A%20%3Clinkedin%20in%3E%0D%0A%0D%0A" type="button" class="btn btn-outline-primary float-right align-middle" >Apply</a>
+    <a href="jobs/{{job['id']}}" type="button"  class="btn btn-outline-primary float-right align-middle" >View details</a>
   </div>
 
 </div>

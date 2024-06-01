@@ -1,42 +1,64 @@
 import os
-import psycopg2
 import psycopg2.extras
 from dotenv import load_dotenv
+
 load_dotenv()
-def initialize_db():
-    connection = psycopg2.connect(
-        host=os.getenv("hostname"),
-        dbname=os.getenv("database"),
-        user=os.getenv("user_name"),
-        password=os.getenv("pwd"),
-        port=os.getenv("portnum")
-    )
-    cursor = connection.cursor(cursor_factory = psycopg2.extras.DictCursor)
-    return connection,cursor
-def add_job(title , location,responsibilities,requirements,salary=None,currency=None):
-    return f'''INSERT INTO jobs(title,location,salary,currency,responsibilities,requirements )
-                VALUES('{title}','{location}',{salary},'{currency}','{responsibilities}','{requirements}');'''
+connection = psycopg2.connect(
+    host=os.getenv("hostname"),
+    dbname=os.getenv("database"),
+    user=os.getenv("user_name"),
+    password=os.getenv("pwd"),
+    port=os.getenv("portnum")
+)
+cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 
-def delete_job(id):
-    return f'''DELETE FROM jobs
-               WHERE id={id};'''
+def add_job(application):
+    cursor.execute(f'''INSERT INTO jobs(id,role,location,company,website,salary,currency,responsibilities,requirements,experience,email)
+                VALUES('{application['id']}',
+                        '{application['role']}',
+                        '{application['location']}',
+                        '{application['company']}',
+                        '{application['website']}',
+                        {application['salary']},
+                        '{application['currency']}',
+                        '{application['responsibilities']}',
+                        '{application['requirements']}',
+                        '{application['experience']}',
+                        '{application['email']}');''')
+    connection.commit()
 
-
-def update_location(id, new_location):
-    return f'''UPDATE jobs
-               SET location='{new_location}',updated_at=CURRENT_TIMESTAMP
-               WHERE id={id};'''
-
-
-def update_salary(id, new_salary):
-    return f'''UPDATE employee
-               SET location={new_salary},updated_at=CURRENT_TIMESTAMP
-               WHERE id={id};'''
 
 
 def get_job(id):
-    return f'''SELECT title,location,salary,currency,responsibilities,requirements FROM jobs
-               WHERE id={id};'''
+    v=f'''SELECT id,role,location,company,website,salary,currency,responsibilities,requirements,created_at FROM jobs
+               WHERE id='{id}';'''
+    print(v)
+    cursor.execute(v)
+    x = cursor.fetchall()
+    connection.commit()
+    return x
+
+
 def get_all_jobs():
-    return f'''SELECT title,location,salary,currency,responsibilities,requirements FROM jobs;'''
+    cursor.execute(f'''SELECT id,role,location,company,website,salary,currency,responsibilities,requirements,created_at FROM jobs
+                       ORDER BY created_at DESC''')
+    x = cursor.fetchall()
+    connection.commit()
+    return x
+
+def add_application_to_db(application,id):
+    try:
+        cursor.execute(f'''INSERT INTO applications(id,full_name,email,highest_education,years_of_experience,skills,linkedin_url,resume_url)
+                           VALUES('{id}',
+                                   '{application['name']}',
+                                   '{application['email']}',
+                                   '{application['education']}',
+                                   {application['experience']},
+                                   '{application['skills']}',
+                                   '{application['linkedin']}',
+                                   '{application['resume']}')''')
+        connection.commit()
+        return True
+    except :
+        return False

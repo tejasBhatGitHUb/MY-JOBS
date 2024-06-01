@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My JOBS</title>
+      <link rel="shortcut icon" type="x-icon" href="/static/M.svg">
+    <title style="font-family: 'Arial'">MY JOBS</title>
+    {% include 'nav.html' %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -15,11 +17,10 @@
     </style>
   </head>
   <body>
-    {% include 'nav.html' %}
     <img class="img-fluid" id="banner" src="/static/ian-schneider-TamMbr4okv4-unsplash.jpg">
     <div class="container">
       <h1 class="text-center mt-2 mb-4">
-        My JOBS
+        MY JOBS
       </h1>
       <div class="row" style="margin-bottom:32px">
         <div class="col-md-6">
@@ -32,7 +33,7 @@ Welcome to MY JOBS, your ultimate destination for finding the perfect job match!
         <img src="/static/working.jpg" style="height:320px;border-radius:4px;">
         </div>
       </div>
-      <h2 class="text-center mt-2 mb-4">Open Positions</h2>
+      <h2 class="text-center mt-2 mb-4" style="font-family: 'Arial'">Open Positions</h2>
       <div>
         {% for job in jobs %}
           {% include 'jobitem.html' %}
@@ -40,9 +41,9 @@ Welcome to MY JOBS, your ultimate destination for finding the perfect job match!
       </div>
       <div class="text-center">
       <a class="btn btn-primary btn-lg"
-         href="mailto:hello@jovian.ai?subject=Question%20about%20Job%20Opernings&body=My%20name%3A%20%3Cyour%20name%20here%3E%0D%0A%0D%0AMy%20questions%3A%20%3Center%20question%20here%3E%0D%0A">Contact Us</a>
+         href="mailto:titikakalolz@gmail.com?subject=Question%20about%20Job%20Opernings&body=My%20name%3A%20%3Cyour%20name%20here%3E%0D%0A%0D%0AMy%20questions%3A%20%3Center%20question%20here%3E%0D%0A">Contact Us</a>
       </div>
-        <p class="text-center text-muted">&copy; 2024 My Career, Inc</p>
+        <p class="text-center text-muted">&copy; 2024 MY JOBS, Inc</p>
     </div>
   </body>
 </html>

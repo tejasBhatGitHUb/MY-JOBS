@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="x-icon" href="/static/M.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Job Details</h2>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Role:</strong> {{ application['role'] }}</li>
+            <li class="list-group-item"><strong>Job ID:</strong> {{ application['id'] }}</li>
+            <li class="list-group-item"><strong>Company:</strong> {{ application['company'] }}</li>
+            <li class="list-group-item"><strong>Website:</strong> <a href="{{ application['website'] }}" target="_blank"> {{ application['website'] }}</a></li>
+            <li class="list-group-item"><strong>Years of Experience:</strong> {{ application['experience'] }}</li>
+            <li class="list-group-item"><strong>Expected Salary:</strong> {{ application['salary'] }}</li>
+            <li class="list-group-item"><strong>Currency:</strong> {{ application['currency'] }}</li>
+            <li class="list-group-item"><strong>location:</strong> {{ application['location'] }}</li>
+            <li class="list-group-item"><strong>Responsibilities:</strong>
+                <ul>
+                    {% for line in application['responsibilities'].split('\n') %}
+                        {%if line|length>1%}
+                            <li>{{line}}</li>
+                        {%endif%}
+                    {%endfor%}
+                </ul>
+            </li>
+            <li class="list-group-item"><strong>Requirements:</strong>
+                <ul>
+                    {% for line in application['requirements'].split('\n')%}
+                        {%if line|length>1%}
+                            <li>{{line}}</li>
+                        {%endif%}
+                    {%endfor%}
+                </ul>
+            </li>
+            <li class="list-group-item"><strong>Email:</strong> {{application['email']}}</li>
+        </ul>
+        <a href="/" class="btn btn-primary mt-3">Home</a>
+    </div>
+
+</body>
+</html>

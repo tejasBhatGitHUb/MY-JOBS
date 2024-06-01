@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="x-icon" href="/static/M.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opening</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .application-card {
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            background-color: #fff;
+        }
+        .application-title {
+            font-size: 1.75em;
+            font-weight: bold;
+            color:#007bff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn-custom {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn-primary, .btn-secondary {
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .form-group{
+            color:#007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="application-card">
+            <div class="application-title">Job Opening</div>
+            <form action = "/job-posting/submission" method="POST" >
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <input type="text" class="form-control" id="role" name="role" placeholder="Data analyst" required>
+                </div><div class="form-group">
+                    <label for="id">Job ID</label>
+                    <input type="text" class="form-control" id="id" name="id" placeholder="ATCI-4241444-S1680585 " required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" class="form-control" id="company" name="company" placeholder="Accenture" required>
+                </div>
+                <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" class="form-control" id="website" name="website"placeholder="https://www.accenture.com/in-en" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Years Experience</label>
+                    <input type="number" class="form-control" id="experience" name="experience" placeholder= 0.0 required>
+                </div><div class="form-group">
+                    <label for="salary">Expected Salary</label>
+                    <input type="number" class="form-control" id="salary" name="salary" placeholder= 400000 required>
+                </div>
+                <div class="form-group">
+                    <label for="currency">Currency</label>
+                    <input type="text" class="form-control" id="currency" name="currency" placeholder="INR" required>
+                </div><div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" id="location" name="location" placeholder="Bengaluru" required>
+                </div>
+                <div class="form-group">
+                    <label for="responsibilities">Responsibilities</label>
+                    <textarea class="form-control" id="responsibilities" name="responsibilities" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="requirements">Requirements</label>
+                    <textarea class="form-control" id="requirements" name="requirements" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="narutouzumaki@konoha.com" required>
+                </div>
+                <div class="btn-custom">
+                    <input type="submit" class="btn btn-primary"></input>
+                    <a onclick="history.go(-1)" class="btn btn-secondary">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+</body>
+</html>
