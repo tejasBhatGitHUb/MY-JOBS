@@ -1,5 +1,6 @@
 Flask
 gunicorn
-dotenv
+python-dotenv
+psycopg2
 psycopg2.extra
 os
