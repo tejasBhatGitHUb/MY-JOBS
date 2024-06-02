@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 connection = psycopg2.connect(
     host="oval-fawn-9402.8nk.gcp-asia-southeast1.cockroachlabs.cloud",
-    dbname="defaultdb",
+    dbname="jobs_database",
     user="User",
     password="ewc1sR5I_dGSoxQA4NdzdA",
     port=26257)
