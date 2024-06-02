@@ -2,5 +2,5 @@ Flask
 gunicorn
 python-dotenv
 psycopg2
-psycopg2.extra
+psycopg2-binary
 os
