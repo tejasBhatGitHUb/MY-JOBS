@@ -6,13 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Confirmation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .list-group-item{
-        color:#007bff;
-    }
-    </style>
 </head>
-<body>
+<body onload="document.refresh();">
     <div class="container mt-5">
         <h2 class="mb-4">Application Confirmation</h2>
         <ul class="list-group">
@@ -30,7 +25,9 @@
             <li class="list-group-item"><strong>LinkedIn URL:</strong> <a href="{{ application['linkedin'] }}" target="_blank">{{ application['linkedin'] }}</a></li>
             <li class="list-group-item"><strong>Resume URL:</strong> <a href="{{ application['resume'] }}" target="_blank">{{ application['resume'] }}</a></li>
         </ul>
-        <a href="/" class="btn btn-primary mt-3">Home</a>
+        <div class="text-center">
+            <a href="/" class="btn btn-primary mt-3">Home</a>
+        </div>
     </div>
 
 </body>
