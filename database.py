@@ -4,11 +4,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 connection = psycopg2.connect(
-    host="oval-fawn-9402.8nk.gcp-asia-southeast1.cockroachlabs.cloud",
-    dbname="jobs_database",
-    user="User",
-    password="ewc1sR5I_dGSoxQA4NdzdA",
-    port=26257)
+    host=os.getenv("hostname"),
+    database=os.getenv("database"),
+    user=os.getenv("user_name"),
+    password=os.getenv("pwd"),
+    port=os.getenv("portnum")
+)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 
